@@ -3,10 +3,11 @@ package com.sf.forms
 import com.sf.FetcherKT.getDataFromProductDetailPage
 import com.sf.FileAccessKT
 import com.sf.NetWorkAccessKT
+import com.sf.extensions.FileExtension
 import com.sf.model.ProductInformation
 import org.jsoup.Jsoup
+import java.io.File
 import java.io.IOException
-import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import javax.swing.JFrame
 import javax.swing.JPanel
@@ -92,12 +93,24 @@ class MainFormKT {
         synchronized(downLoadQueue) {
             if (downLoadQueue.isNotEmpty()) {
                 val productionInfo = downLoadQueue.poll()
-                val path = FileAccessKT.pathPrefix + productionInfo.ProductName?.replace(" ", "") + "\\" + UUID.randomUUID()
+                var path = FileExtension.generatePathString(FileAccessKT.pathPrefix, productionInfo.ProductName?.replace(" ", "") ?: "")
                 val textWriteToFile = generateFileInfoString(productionInfo).replace("\n", "\r\n")
+                //解决路径冲突
+                path = handleConfict(path)
                 FileAccessKT.writeTextToFile(textWriteToFile, path, "商品详情.txt")
                 val buffer = NetWorkAccessKT.getStreamFromUrl(productionInfo.ImageUrl!!)
                 FileAccessKT.writeBufferToFile(buffer, path)
             }
+        }
+    }
+
+    fun handleConfict(path: String): String {
+        val f = File(path)
+        if (f.exists()) {
+            val count = f.listFiles().count()
+            return "path${count + 1}"
+        } else {
+            return path
         }
     }
 }

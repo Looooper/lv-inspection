@@ -1,7 +1,6 @@
 package com.sf
 
 import java.net.URL
-import java.net.URLEncoder
 
 /**
  * Created by Shenfan on 2017/7/12.
@@ -9,7 +8,7 @@ import java.net.URLEncoder
 object NetWorkAccessKT {
     fun getStreamFromUrl(url: String): ByteArray? {
         try {
-            val resource = URL(url.replace(" ","%20"))
+            val resource = URL(url.replace(" ", "%20"))
             return resource.readBytes()
         } catch (e: Exception) {
             return null
