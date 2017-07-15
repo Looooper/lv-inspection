@@ -108,7 +108,7 @@ class MainFormKT {
         val f = File(path)
         if (f.exists()) {
             val count = f.listFiles().count()
-            return "path${count + 1}"
+            return "$path-${count + 1}"
         } else {
             return path
         }

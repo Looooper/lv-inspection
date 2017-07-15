@@ -35,6 +35,7 @@ fun main(args: Array<String>) {
                 val path = File(FileAccessKT.pathPrefix)
                 if (path.deleteRecursively()) {
                     while (true) {
+                        //消费下载队列里的数据
                         mainFormKT.consumeQueue()
                     }
                 }

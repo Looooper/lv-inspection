@@ -7,7 +7,7 @@ import java.io.File
  * Created by Shenfan on 2017/7/12.
  */
 object FileAccessKT {
-    val pathPrefix = FileExtension.generatePathString(System.getProperty("user.dir"), "DOWNLOADS")
+    val pathPrefix = FileExtension.generatePathString(System.getProperty("user.dir"), "downloads")
 
     fun writeBufferToFile(buffer: ByteArray?, path: String, fileName: String = "商品图片.jpg") {
         //写入文件

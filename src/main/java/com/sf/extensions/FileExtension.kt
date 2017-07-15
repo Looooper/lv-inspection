@@ -9,7 +9,7 @@ object FileExtension {
     fun generatePathString(vararg paths: String): String {
         return paths.reduce({ x, y ->
             if (!x.isNullOrBlank())
-                x + File.pathSeparator + y
+                x + File.separator + y
             else
                 x + y
         })
