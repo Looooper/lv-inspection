@@ -1,11 +1,16 @@
-package com.sf
+package com.sf.util
 
 
 import com.sf.model.ProductInformation
 import org.jsoup.Jsoup
 import java.io.IOException
 
-object FetcherKT {
+/**
+ * Created by Shenfan on 2017/7/14.
+ * All Rights Reserved
+ */
+
+object Fetcher {
     //获取商品介绍页的数据
     @Throws(IOException::class)
     fun getDataFromProductDetailPage(url: String): ProductInformation {

@@ -1,13 +1,14 @@
-package com.sf
+package com.sf.util
 
-import com.sf.extensions.FileExtension
 import java.io.File
 
 /**
- * Created by Shenfan on 2017/7/12.
+ * Created by Shenfan on 2017/7/14.
+ * All Rights Reserved
  */
-object FileAccessKT {
-    val pathPrefix = FileExtension.generatePathString(System.getProperty("user.dir"), "downloads")
+
+object FileAccess {
+    val pathPrefix = FileUtil.generatePathString(System.getProperty("user.dir"), "downloads")
 
     fun writeBufferToFile(buffer: ByteArray?, path: String, fileName: String = "商品图片.jpg") {
         //写入文件

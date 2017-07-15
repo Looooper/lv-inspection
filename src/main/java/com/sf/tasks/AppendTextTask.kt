@@ -1,14 +1,19 @@
 package com.sf.tasks
 
-import com.sf.FetcherKT
 import com.sf.model.ProductInformation
+import com.sf.util.Fetcher
 import org.jsoup.Jsoup
 import java.io.IOException
 import java.util.concurrent.ConcurrentLinkedQueue
 import javax.swing.JTextArea
 
 /**
- * Created by shenfan on 2017/7/15.
+ * Created by Shenfan on 2017/7/14.
+ * All Rights Reserved
+ */
+
+/**
+ * 向用户界面填充文本的后台任务
  */
 class AppendTextTask(val downLoadQueue: ConcurrentLinkedQueue<ProductInformation>,
                      val jTextArea: JTextArea) : Runnable {
@@ -50,7 +55,7 @@ class AppendTextTask(val downLoadQueue: ConcurrentLinkedQueue<ProductInformation
                                 //图片标签
                                 val imageNode = node.select(".imageWrapper").select("img").first()
                                 //构建商品信息对象（便于写入文件，下载图片）
-                                val productInformation = FetcherKT.getDataFromProductDetailPage(prefix + node.attr("href"))
+                                val productInformation = Fetcher.getDataFromProductDetailPage(prefix + node.attr("href"))
                                 productInformation.ProductName = productName.text()
                                 //取图片标签的data-src属性得到图片地址
                                 productInformation.ImageUrl = imageNode.attr("data-src").replace("{IMG_HEIGHT}", "500").replace("{IMG_WIDTH}", "500")
@@ -60,7 +65,7 @@ class AppendTextTask(val downLoadQueue: ConcurrentLinkedQueue<ProductInformation
                                 jTextArea.caretPosition = jTextArea.text.length
 
                                 //添加商品到下载队列
-                                downLoadQueue.add(productInformation)
+                                downLoadQueue.offer(productInformation)
                             }
                         }
                     } catch (e: InterruptedException) {

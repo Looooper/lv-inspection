@@ -1,11 +1,13 @@
-package com.sf.extensions
+package com.sf.util
 
 import java.io.File
 
 /**
- * Created by shenfan on 2017/7/15.
+ * Created by Shenfan on 2017/7/14.
+ * All Rights Reserved
  */
-object FileExtension {
+
+object FileUtil {
     fun generatePathString(vararg paths: String): String {
         return paths.reduce({ x, y ->
             if (!x.isNullOrBlank())
