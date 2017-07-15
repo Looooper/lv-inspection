@@ -18,7 +18,7 @@ object FetcherKT {
         //价格priceValue price-sheet
         val elemPrice = document.select(".priceValue").first()
         //特性数组
-        val features = elemFeatures.text().split("-")
+        val features = elemFeatures?.text()?.split("-")
 
         val productInformation = ProductInformation()
         productInformation.Introduction = elemIntroduction?.text()
