@@ -42,6 +42,7 @@ object StartUp {
     fun main(args: Array<String>) {
         // 初始化页面控件
         initControl()
+
         var appendTextTask: AppendTextTask? = null
         var downLoadTask: DownLoadTask? = null
 
@@ -94,7 +95,7 @@ object StartUp {
         })
     }
 
-    fun initControl(){
+    fun initControl() {
         jFrame.title = "zz"
         rootPane.layout = null
 
