@@ -23,7 +23,7 @@ class ProductInformation {
         sb.append("------------简介----------------\n${this.Introduction ?: "商品简介缺失"}\n")
         sb.append("------------特性----------------\n")
         this.Features?.forEach {
-            if (!it.isNullOrBlank())
+            if (!it.isBlank())
                 sb.append("${it.trim()}\n")
         }
         sb.append("------------价格----------------\n${this.Price ?: "商品价格缺失"}\n")

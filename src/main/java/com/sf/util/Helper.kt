@@ -11,11 +11,11 @@ object Helper {
 
     fun handleConflict(path: String): String {
         val f = File(path)
-        if (f.exists()) {
+        return if (f.exists()) {
             val count = f.parentFile.listFiles { x -> x.name.equals(f.name, true) }.count()
-            return "$path-${count + 1}"
+            "$path-${count + 1}"
         } else {
-            return path
+            path
         }
     }
 

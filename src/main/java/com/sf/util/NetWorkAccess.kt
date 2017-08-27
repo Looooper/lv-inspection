@@ -9,11 +9,11 @@ import java.net.URL
 
 object NetWorkAccess {
     fun getStreamFromUrl(url: String): ByteArray? {
-        try {
+        return try {
             val resource = URL(url.replace(" ", "%20"))
-            return resource.readBytes()
+            resource.readBytes()
         } catch (e: Exception) {
-            return null
+            null
         }
     }
 }

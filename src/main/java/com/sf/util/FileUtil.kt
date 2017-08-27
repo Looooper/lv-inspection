@@ -10,7 +10,7 @@ import java.io.File
 object FileUtil {
     fun generatePathString(vararg paths: String): String {
         return paths.reduce({ x, y ->
-            if (!x.isNullOrBlank())
+            if (!x.isBlank())
                 x + File.separator + y
             else
                 x + y
