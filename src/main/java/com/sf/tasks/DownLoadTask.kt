@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentLinkedQueue
 /**
  * 下载图片的后台任务
  */
-class DownLoadTask(val downLoadQueue: ConcurrentLinkedQueue<ProductInformation>) : Runnable {
+class DownLoadTask(private val downLoadQueue: ConcurrentLinkedQueue<ProductInformation>) : Runnable {
 
     // 线程中断标记位
     @Volatile var threadStopFlag = false
